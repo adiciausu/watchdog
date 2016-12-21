@@ -1,0 +1,2 @@
+Container.initialize();
+Analyzers.run();

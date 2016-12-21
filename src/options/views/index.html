@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Watchdog Configuration</title>
+    <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../css/index.css" rel="stylesheet" media="screen">
+    <script src="../../../vendor/framework/jquery/jquery.js"></script>
+    <script src="../../../vendor/framework/jquery/plugins/jquery.validate.js"></script>
+    <script src="../../../vendor/framework/config/config.js"></script>
+    <script src="../../../vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../options.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8 offset4">
+            <h1>Watchdog configuration</h1>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <h2>Websites</h2>
+        </div>
+        <div class="span10">
+            <a href="#addWebsite" role="button" id="addWebsiteButton"  class="btn btn-primary" data-toggle="modal"
+               title="Add a new website">
+                Add new website
+            </a>
+        </div>
+    </div>
+    <div id="siteContainer">
+    </div>
+</div>
+
+<!-- MOLDS -->
+<div id="addAnalyzerMold" class="hide">
+    <label class="checkbox">
+        <input class="analyzerName" type="checkbox"  value="%analyzerId%"/>%analyzerName%
+    </label>
+
+
+    <strong>Exclude</strong> urls containing:
+    <a href="javascript://" class="addExclude" rel="%analyzerId%"><i class="icon-plus"></i> Add</a>
+
+    <div id="excludeUrls-%analyzerId%">
+    </div>
+    <hr/>
+</div>
+
+<div id="addExcludeUrlMold" class="hide">
+    <input type="text" value="%excludeValue%" placeholder="ex: admin"/>
+    <a href="javascript://" class="removeExcludeUrl"><i class="icon-trash"></i> Remove</a>
+</div>
+
+<div id="showSiteMold" class="hide">
+    <hr/>
+    <div class="row-fluid">
+        <div class="span2">
+            <h3>%siteName%</h3>
+        </div>
+        <div class="span10">
+            <a href="#addWebsite" class="editSite" rel="%siteName%" data-toggle="modal"><i class="icon-pencil"></i> Edit</a>
+            <a href="javascript://" class="deleteSite" rel="%siteName%"><i class="icon-trash"></i> Delete</a>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <p class="muted">Analyzers:</p>
+
+        <div class="analyzers">%analyzers%</div>
+    </div>
+</div>
+
+<div id="analyzerMold" class="hide">
+    <dl>
+        <dt>
+        <h4>%analyzerName%</h4>
+        </dt>
+        <dd>
+            <small class="muted"><strong>Exclude</strong> urls containing:</small>
+            <ul class="analyzers">%excludeUrls%</ul>
+        </dd>
+    </dl>
+</div>
+
+<div id="excludeUrlsMold" class="hide">
+    <li>%excludeUrl%</li>
+</div>
+
+<div id="noSitesMold" class="hide">
+    <p>Watchdog is not monitoring any of your sites. Go ahead,
+        <a href="#addWebsite" role="button" data-toggle="modal" title="Add a new site to this list">add a site!</a>
+    </p>
+</div>
+
+<!-- Add site modal -->
+<div class="modal hide fade" id="addWebsite">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Add a new site for Watchdog to monitor!</h3>
+    </div>
+    <div class="modal-body">
+        <form id="addSiteForm" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="newSiteName">Website url:</label>
+
+                <div class="controls input-prepend">
+                    <span class="add-on">http://</span>
+                    <input type="input" id="newSiteName" name="name"
+                           placeholder="ex: mashable.com"/>
+                </div>
+            </div>
+            <legend>Analyzers</legend>
+            <div id="addAnalyzerContainer">
+            </div>
+            <input id="isEdit" type="hidden" value="false"/>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary" id="saveNewSite">Save</a>
+    </div>
+</div>
+
+</body>
+</html>

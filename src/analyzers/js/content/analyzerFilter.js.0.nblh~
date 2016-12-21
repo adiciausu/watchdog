@@ -1,0 +1,39 @@
+var AnalyzerFilter =
+{
+    acceptedAnalyzers:[],
+
+    filterCallback:function (script) {
+        // only filter analyzers
+        if (-1 == script.indexOf('analyzers')) {
+            return true
+        }
+        var response = false;
+        console.log(AnalyzerFilter.acceptedAnalyzers);
+        jQuery.each(AnalyzerFilter.acceptedAnalyzers, function (key, analyzer) {
+            if (-1 !== script.indexOf(analyzer)) {
+                response = true;
+            }
+        })
+        
+        return response;
+    },
+
+    registerEmbedFilterCallbacks:function (callback) {
+        EmbedAutoloader.addFilterCallback(this.filterCallback);
+        chrome.storage.sync.get(['state', 'sites'], function(storage){
+           console.log(storage)
+           if (!storage.state) {
+               return;
+           }
+           jQuery.each(sites['sites'], function (name, site) {
+                if (-1 == document.URL.indexOf(site.name)) {
+                    return;
+                }
+                this.acceptedAnalyzers = site.analyzers;
+           }.bind(this));
+           callback();
+        }.bind(this));    
+    }
+}
+
+

@@ -1,0 +1,35 @@
+var BrowserAction = {
+  
+    initialize: function(){
+        this.getState();
+        $('#check').live('change', function(event){
+            this.changeState($(event.target).is(':checked'));
+        }.bind(this))
+    },
+  
+    getState: function(){
+        chrome.storage.sync.get('state', function(storage){
+            var isChecked = false;
+            if (undefined == storage.state){
+                this.changeState(true);
+                isChecked = true;
+            }
+            
+            if (storage.state) {
+                 isChecked = true;
+            }
+            $('.checkable').toggleClass('çhecked');
+        }.bind(this)); 
+    },
+  
+    changeState:function(state){
+        chrome.storage.sync.set({'state': state});
+    }
+}
+
+$(document).ready(function(){
+    BrowserAction.initialize();
+})
+
+
+       

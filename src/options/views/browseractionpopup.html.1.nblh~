@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Watchdog</title>
+        <link rel="stylesheet" href="../css/browserAction.css" type="text/css" media="screen, projection" />
+    </head>
+    <body>
+        <div class="checkbox">
+            <input id="check" name="1" type="checkbox" value="1" />
+            <label for="check">Check-me</label>
+        </div>
+        <div>
+            Add websites to be monitored by Watchdog!
+        </div>
+    </body>
+</html>

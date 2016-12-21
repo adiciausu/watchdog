@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watchdog</title>
+</head>
+<body>
+    <a href="javascript://" title="Disable watchdog">Disable</a>
+    <a href="javascript://" title="Enable watchdog">Enable</a>
+</body>
+</html>

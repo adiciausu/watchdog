@@ -1,0 +1,24 @@
+{
+    "analyzers":[
+        {
+            "id": "google-analytics",
+            "name": "Google Analytics"
+        },
+        {
+            "id": "google-remarketing",
+            "name": "Google Remarketing"
+        },
+        {
+            "id": "brat",
+            "name": "Brat"
+        },
+        {
+            "id": "tradeads",
+            "name": "TradeAds"
+        },
+        {
+            "id": "trafic",
+            "name": "Trafic.ro"
+        }
+    ]
+}
